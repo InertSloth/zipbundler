@@ -1,7 +1,7 @@
 <!-- Roadmap.md -->
 # 🧭 Roadmap
 
-**Important Clarification**: {{project_title}} provides {{project_description}}
+**Important Clarification**: Zipbundler provides Bundle your packages into a runnable, importable zip
 
 ## Key Points
 
@@ -42,5 +42,5 @@ Some of these we just want to consider, and may not want to implement.
 > ✨ *AI was used to help draft language, formatting, and code — plus we just love em dashes.*
 
 <p align="center">
-  <sub>😐 <a href="https://{{project_org}}.github.io/">{{project_author}}</a> © <a href="./LICENSE">MIT-aNOAI</a></sub>
+  <sub>😐 <a href="https://apathetic-tools.github.io/">Apathetic Tools</a> © <a href="./LICENSE">MIT-aNOAI</a></sub>
 </p>

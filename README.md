@@ -1,50 +1,49 @@
-# {{project_title}} 🧭 
+# Zipbundler 🗜️
 
-
-[![CI]({{project_repo}}/actions/workflows/ci.yml/badge.svg?branch=main)]({{project_repo}}/actions/workflows/ci.yml)
+[![CI](https://github.com/apathetic-tools/zipbundler/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/apathetic-tools/zipbundler/actions/workflows/ci.yml)
 [![License: MIT-aNOAI](https://img.shields.io/badge/License-MIT--aNOAI-blueviolet.svg)](LICENSE)
 [![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?logo=discord&logoColor=white)](https://discord.gg/PW6GahZ7)
 
-**{{project_description}}**  
-*Because tasks shouldn't get lost in translation.*
+**Bundle your packages into a runnable, importable zip.**  
+*Because installation is optional.*
 
-📘 **[Roadmap](./ROADMAP.md)** · 📝 **[Release Notes]({{project_repo}}/releases)**
+📘 **[Roadmap](./ROADMAP.md)** · 📝 **[Release Notes](https://github.com/apathetic-tools/zipbundler/releases)**
 
 > [!NOTE]
 > Heads up: the AI cooked dinner. It's edible, but watch your step. Detailed bug reports welcome.
 
 ## 🚀 Quick Start
 
-{{project_title}} provides preset rules, workflows, and commands for AI-powered IDE integrations like Cursor, Claude Desktop, and similar tools. These presets can be selectively enabled, similar to how you configure linter rules.
+Zipbundler provides preset rules, workflows, and commands for AI-powered IDE integrations like Cursor, Claude Desktop, and similar tools. These presets can be selectively enabled, similar to how you configure linter rules.
 
 ### Installation
 
 ```bash
 # Using poetry
-poetry add {{project_name}}
+poetry add zipbundler
 
 # Using pip
-pip install {{project_name}}
+pip install zipbundler
 ```
 
 ### Basic Usage
 
 ```bash
 # Enable specific presets (coming soon)
-{{project_script_name}} enable --rules code-quality --workflows testing
+zipbundler enable --rules code-quality --workflows testing
 
 # List available presets
-{{project_script_name}} list
+zipbundler list
 
 # Apply presets to your project
-{{project_script_name}} sync
+zipbundler sync
 ```
 
 ---
 
-## 🎯 What is {{project_title}}?
+## 🎯 What is Zipbundler?
 
-{{project_title}} offers a curated collection of AI guidance presets that you can selectively enable:
+Zipbundler offers a curated collection of AI guidance presets that you can selectively enable:
 
 - **Preset Rules**: Pre-configured prompt rules that get added to each AI interaction
   - Code quality standards
@@ -64,7 +63,7 @@ pip install {{project_name}}
   - Run code quality checks
   - Format and lint code
 
-All of these leverage functionality that already exists in your IDE — {{project_title}} just provides a well-organized, selective set of presets you can opt into, similar to how ruff lets you choose which linting rules to enable.
+All of these leverage functionality that already exists in your IDE — Zipbundler just provides a well-organized, selective set of presets you can opt into, similar to how ruff lets you choose which linting rules to enable.
 
 ## ✨ Features
 
@@ -94,5 +93,5 @@ It's MIT-licensed, minimal, and meant to stay out of your way — just with one 
 > ✨ *AI was used to help draft language, formatting, and code — plus we just love em dashes.*
 
 <p align="center">
-  <sub>😐 <a href="https://{{project_org}}.github.io/">{{project_author}}</a> © <a href="./LICENSE">MIT-aNOAI</a></sub>
+  <sub>😐 <a href="https://apathetic-tools.github.io/">Apathetic Tools</a> © <a href="./LICENSE">MIT-aNOAI</a></sub>
 </p>

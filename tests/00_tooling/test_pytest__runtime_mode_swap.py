@@ -3,12 +3,12 @@
 
 This test verifies that our unique runtime_mode swap functionality works
 correctly. Our conftest.py uses runtime_swap() to allow tests to run against
-either the installed package (src/{{project_name}}) or the standalone single-file script
-(dist/{{project_script_name}}.py) based on the RUNTIME_MODE environment variable.
+either the installed package (src/zipbundler) or the standalone single-file script
+(dist/zipbundler.py) based on the RUNTIME_MODE environment variable.
 
 Verifies:
-  - When RUNTIME_MODE=singlefile: All modules resolve to dist/{{project_script_name}}.py
-  - When RUNTIME_MODE is unset (installed): All modules resolve to src/{{project_name}}/
+  - When RUNTIME_MODE=singlefile: All modules resolve to dist/zipbundler.py
+  - When RUNTIME_MODE is unset (installed): All modules resolve to src/zipbundler/
   - Python's import cache (sys.modules) points to the correct sources
   - All submodules load from the expected location
 
@@ -26,8 +26,8 @@ import apathetic_utils as amod_utils_system
 import pytest
 from apathetic_logging import makeSafeTrace
 
-import {{project_name}} as app_package
-import {{project_name}}.meta as mod_meta
+import zipbundler as app_package
+import zipbundler.meta as mod_meta
 from tests.utils import PROJ_ROOT
 
 
@@ -149,7 +149,7 @@ def test_pytest_runtime_cache_integrity() -> None:  # noqa: PLR0912
 
         # path peeks - in singlefile mode, apathetic_utils modules might be
         # imported from the installed package, but they should still detect
-        # standalone mode correctly via sys.modules.get("{{project_name}}")
+        # standalone mode correctly via sys.modules.get("zipbundler")
         # So we only check the path if the module is actually from dist/
         if utils_file.startswith(str(DIST_ROOT)):
             # Module is from standalone script, verify it's the right file

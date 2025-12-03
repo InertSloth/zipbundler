@@ -2,8 +2,8 @@
 """Custom lint rule: Enforce `import <mod> as mod_<mod>` pattern in tests.
 
 This test acts as a "poor person's linter" since we can't create custom ruff rules yet.
-It enforces that ALL test files use `import {{project_name}}.module as mod_module` format
-instead of `from {{project_name}}.module import ...` when importing from our project.
+It enforces that ALL test files use `import zipbundler.module as mod_module` format
+instead of `from zipbundler.module import ...` when importing from our project.
 
 CRITICAL: This rule applies to ALL imports from our project, including private
 functions (those starting with _). There are NO exceptions.
@@ -24,7 +24,7 @@ the function directly.
 import ast
 from pathlib import Path
 
-import {{project_name}}.meta as mod_meta
+import zipbundler.meta as mod_meta
 
 
 # Package names that are disallowed from `from ... import` statements in tests

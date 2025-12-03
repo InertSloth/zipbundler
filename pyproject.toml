@@ -1,11 +1,11 @@
 # pyproject.toml
 
 [project]
-name = "{{project_name}}"
+name = "zipbundler"
 version = "0.1.0"
-description = "{{project_description}}"
+description = "Bundle your packages into a runnable, importable zip"
 authors = [
-    {name = "{{project_author}}"}
+    {name = "Apathetic Tools"}
 ]
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -16,7 +16,7 @@ dependencies = [
 ]
 keywords = ["ai", "agent", "workflow"]
 classifiers = [
-    "Development Status :: 4 - Beta",
+    "Development Status :: 3 - Alpha",
     "Environment :: Console",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
@@ -29,11 +29,11 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "{{project_repo}}"
-Documentation = "{{project_docs_url}}"
-Repository = "{{project_repo}}"
-Issues = "{{project_repo}}/issues"
-Changelog = "{{project_repo}}/releases"
+Homepage = "https://github.com/apathetic-tools/zipbundler"
+Documentation = "https://apathetic-tools.github.io/zipbundler/"
+Repository = "https://github.com/apathetic-tools/zipbundler"
+Issues = "https://github.com/apathetic-tools/zipbundler/issues"
+Changelog = "https://github.com/apathetic-tools/zipbundler/releases"
 
 # --- Development tasks ---
 [tool.poe.tasks]
@@ -52,7 +52,7 @@ typecheck = ["typecheck:mypy", "typecheck:pyright"]
 "typecheck:pyright" = "bash dev/pyright-quiet.sh src tests"
 
 # 🧪 Tests (runs all three: installed + singlefile + zipapp)
-test = ["test:pytest:installed", "test:pytest:script", "test:pytest:zipapp"]
+test = ["test:pytest:installed", "test:pytest:script"]
 "test:pytest:installed" = "pytest"
 "test:pytest:installed:parallel" = "pytest -n auto"
 "test:pytest:script" = [
@@ -94,7 +94,7 @@ test = ["test:pytest:installed", "test:pytest:script", "test:pytest:zipapp"]
 "test:parallel" = [
   "test:pytest:installed:parallel",
   "test:pytest:script:parallel",
-  "test:pytest:zipapp:parallel"
+#  "test:pytest:zipapp:parallel"
 ]
 
 # 📊 Coverage reporting
@@ -133,9 +133,9 @@ fix = ["sync:ai:guidance", "fix:ruff:installed", "fix:format:installed"]
 
 # 🧩 Build and license
 "sync:ai:guidance" = "python -m sync_ai_guidance --quiet"
-# this creates the singlefile script from the module, it need to use serger not {{project_name}} to do that
+# this creates the singlefile script from the module, it need to use serger not zipbundler to do that
 "build:script" = "python -m serger"
-"build:zipapp" = "shiv -c {{project_script_name}} -o dist/{{project_script_name}}.pyz . --quiet"
+"build:zipapp" = "python -m zipbundler -c zipbundler -o dist/zipbundler.pyz . --quiet"
 
 # 🚀 Release management (semantic-release)
 "release:version" = "semantic-release version --noop"
@@ -198,10 +198,9 @@ dev = [
     "pytest-cov (>=7.0.0,<8.0.0)",
     "pytest-xdist",
     "pyright (>=1.1.407,<2.0.0)",
-    "shiv (>=1.0.0,<2.0.0)",
     "python-semantic-release (>=10.0.0,<11.0.0)",
-    "serger (>=0.1.0,<0.2.0)",
-    "sheave (>=0.1.0,<0.2.0)",
+    "serger (>=0.1.0,<2.0.0)",
+    "sheave (>=0.1.0,<2.0.0)",
 ]
 
 # --- Ruff: formatter and linter ---
@@ -298,11 +297,11 @@ quote-style = "double"
 indent-style = "space"
 
 [tool.ruff.lint.flake8-import-conventions]
-banned-from = ["{{project_name}}"] # only in tests, see per-file ignores
+banned-from = ["zipbundler"] # only in tests, see per-file ignores
 
 [tool.ruff.lint.isort]
 combine-as-imports = true
-known-first-party = ["{{project_name}}"]
+known-first-party = ["zipbundler"]
 force-single-line = false
 lines-after-imports = 2
 
@@ -319,7 +318,7 @@ max-returns = 5
 profile = "black"                # Matches Ruff formatter style
 line_length = 88                 # Keep consistent with Ruff
 combine_as_imports = true        # Same as Ruff’s setting
-known_first_party = ["{{project_name}}"]
+known_first_party = ["zipbundler"]
 skip_gitignore = true            # Avoid touching ignored files
 force_single_line = false        # Don’t explode imports unnecessarily
 atomic = true                    # Fail instead of partial reordering if conflicts occur
@@ -422,7 +421,7 @@ keep_trailing_newline = false
 
 # --- Poetry Build System ---
 [project.scripts]
-{{project_script_name}} = "{{project_package}}.__main__:main"
+zipbundler = "zipbundler.__main__:main"
 
 [build-system]
 requires = ["poetry-core>=2.0.0"]
@@ -431,7 +430,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 package-mode = true
 packages = [
-  { include = "{{project_name}}", from = "src" },
+  { include = "zipbundler", from = "src" },
   { include = "list_project", from = "src" },
   { include = "sync_ai_guidance", from = "src" }
 ]

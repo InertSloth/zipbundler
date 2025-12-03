@@ -2,9 +2,9 @@
 """Shared test setup for project.
 
 Each pytest run now targets a single runtime mode:
-- Normal mode (default): uses src/{{project_name}}
-- Standalone mode: uses dist/{{project_script_name}}.py when RUNTIME_MODE=singlefile
-- Zipapp mode: uses dist/{{project_script_name}}.pyz when RUNTIME_MODE=zipapp
+- Normal mode (default): uses src/zipbundler
+- Standalone mode: uses dist/zipbundler.py when RUNTIME_MODE=singlefile
+- Zipapp mode: uses dist/zipbundler.pyz when RUNTIME_MODE=zipapp
 
 Switch mode with: RUNTIME_MODE=singlefile pytest or RUNTIME_MODE=zipapp pytest
 """
@@ -16,7 +16,7 @@ import apathetic_utils as mod_apathetic_utils
 import pytest
 from apathetic_logging import makeSafeTrace
 
-import {{project_name}}.logs as mod_logs
+import zipbundler.logs as mod_logs
 from tests.utils import BUNDLER_SCRIPT, PROGRAM_PACKAGE, PROGRAM_SCRIPT, PROJ_ROOT
 
 

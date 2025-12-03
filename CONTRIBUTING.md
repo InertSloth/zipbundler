@@ -1,12 +1,12 @@
 # 🧩 Contributing Guide
 
-Thanks for your interest in contributing to **{{project_title}}** — {{project_description}}
+Thanks for your interest in contributing to **Zipbundler** — Bundle your packages into a runnable, importable zip
 
 ---
 
 ## 🐍 Supported Python Versions
 
-{{project_title}} targets **Python 3.10+**.
+Zipbundler targets **Python 3.10+**.
 That keeps compatibility with Ubuntu 22.04 (the baseline CI OS) while staying modern.
 See the [decision record #4](DECISIONS.md#dec04) for background on this choice.
 
@@ -139,4 +139,4 @@ poetry publish --username __token__ --password <your-pypi-token>
 
 ---
 
-**Thank you for helping keep {{project_name}} tiny, dependency-free, and delightful.**
+**Thank you for helping keep zipbundler tiny, dependency-free, and delightful.**

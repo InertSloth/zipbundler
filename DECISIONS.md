@@ -1,7 +1,7 @@
 <!-- DECISIONS.md -->
 # DECISIONS.md
 
-A record of major design and implementation choices in **{{project_name}}** — what was considered, what was chosen, and why.
+A record of major design and implementation choices in **zipbundler** — what was considered, what was chosen, and why.
 
 Each decision:
 
@@ -19,7 +19,7 @@ For formatting guidelines, see the [DECISIONS.md Style Guide](./DECISIONS_STYLE_
 
 ### Context
 
-After stitching source files into a single script, {{project_title}} needs to ensure the output meets quality standards — static checking, formatting, and import organization. The tool should support a flexible, priority-based system where users can configure which tools run in which order, with fallbacks when preferred tools aren't available.
+After stitching source files into a single script, Zipbundler needs to ensure the output meets quality standards — static checking, formatting, and import organization. The tool should support a flexible, priority-based system where users can configure which tools run in which order, with fallbacks when preferred tools aren't available.
 
 ### Options Considered
 
@@ -109,7 +109,7 @@ As the early ad-hoc merger script evolved into a tested module, we want to ensur
 | Option | Pros | Cons | Tools
 |--------|------|------|------|
 | **PyPI module (default)** | ✅ Easy to maintain and install<br>✅ Supports imports and APIs | ❌ Requires installation and internet | [`poetry`](https://python-poetry.org/), [`pip`](https://pypi.org/project/pip/) |
-| **Single-file script** | ✅ No install step<br>✅ Human-readable source<br>✅ Ideal for quick CLI use | ❌ Not importable<br>❌ Harder to maintain merger logic | [`{{project_name}}`]({{project_repo}}) |
+| **Single-file script** | ✅ No install step<br>✅ Human-readable source<br>✅ Ideal for quick CLI use | ❌ Not importable<br>❌ Harder to maintain merger logic | [`zipbundler`](https://github.com/apathetic-tools/zipbundler) |
 | **Zipped module (`.pyz`)** | ✅ Bundled, portable archive<br>✅ Maintains import semantics | ⚠️ Requires unzip for source<br>⚠️ Slight startup overhead | [`zipapp`](https://docs.python.org/3/library/zipapp.html), [`shiv`](https://pypi.org/project/shiv/), [`pex`](https://pypi.org/project/pex/) |
 | **Executable bundlers** | ✅ Fully portable binaries<br>✅ No Python install required | ❌ Platform-specific<br>❌ Not source-transparent  | [`PyInstaller`](https://pyinstaller.org/en/stable/), [`shiv`](https://pypi.org/project/shiv/), [`pex`](https://pypi.org/project/pex/) |
 
@@ -287,7 +287,7 @@ This mirrors the **familiar ergonomics of `package.json` + `pnpm`** for develope
 ### Context
 
 The project needed a **clear, inclusive standard of behavior** for contributors and maintainers.  
-As the {{project_author}} ecosystem grows, shared norms for collaboration, respect, and conflict resolution become essential — especially for open projects that welcome community participation.  
+As the Apathetic Tools ecosystem grows, shared norms for collaboration, respect, and conflict resolution become essential — especially for open projects that welcome community participation.  
 Rather than inventing custom language, the team wanted a **widely recognized, well-maintained template** that could be easily understood, translated, and enforced.
 
 ### Options Considered
@@ -487,5 +487,5 @@ _This document records **why** we build things the way we do — not just **what
 > ✨ *AI was used to help draft language, formatting, and code — plus we just love em dashes.*
 
 <p align="center">
-  <sub>😐 <a href="https://{{project_org}}.github.io/">{{project_author}}</a> © <a href="./LICENSE">MIT-aNOAI</a></sub>
+  <sub>😐 <a href="https://apathetic-tools.github.io/">Apathetic Tools</a> © <a href="./LICENSE">MIT-aNOAI</a></sub>
 </p>
