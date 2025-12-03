@@ -2,6 +2,8 @@ import argparse
 import sys
 from pathlib import Path
 
+from apathetic_logging import LEVEL_ORDER
+
 from .build import build_zipapp, get_interpreter
 from .logs import getAppLogger
 
@@ -54,7 +56,37 @@ def main(args: list[str] | None = None) -> int:  # noqa: C901, PLR0911, PLR0912,
         help="Enable compression (deflate method)",
     )
 
+    # --- Version and verbosity ---
+    log_level = parser.add_mutually_exclusive_group()
+    log_level.add_argument(
+        "-q",
+        "--quiet",
+        action="store_const",
+        const="warning",
+        dest="log_level",
+        help="Suppress non-critical output (same as --log-level warning).",
+    )
+    log_level.add_argument(
+        "-v",
+        "--verbose",
+        action="store_const",
+        const="debug",
+        dest="log_level",
+        help="Verbose output (same as --log-level debug).",
+    )
+    log_level.add_argument(
+        "--log-level",
+        choices=LEVEL_ORDER,
+        default=None,
+        dest="log_level",
+        help="Set log verbosity level.",
+    )
+
     parsed_args = parser.parse_args(args)
+
+    # Initialize logger with CLI args
+    resolved_log_level = logger.determineLogLevel(args=parsed_args)
+    logger.setLevel(resolved_log_level)
 
     # Handle --info flag
     if parsed_args.info:
