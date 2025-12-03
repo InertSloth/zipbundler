@@ -279,14 +279,6 @@ ignore = [
 "src/**/*.py" = [
   "ICN001", # Allow from imports in src
 ]
-"src/sync_ai_guidance/**/*.py" = [
-  "ICN001", # Allow from imports in src
-  "T201", # print found
-]
-"src/list_project/**/*.py" = [
-  "ICN001", # Allow from imports in src
-  "T201", # print found
-]
 "tests/**/*.py" = [
   "INP001", # missing __init__.py
   "S101", # Use of `assert` detected
@@ -431,7 +423,5 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 package-mode = true
 packages = [
-  { include = "zipbundler", from = "src" },
-  { include = "list_project", from = "src" },
-  { include = "sync_ai_guidance", from = "src" }
+  { include = "zipbundler", from = "src" }
 ]
