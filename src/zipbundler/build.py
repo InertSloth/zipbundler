@@ -13,6 +13,8 @@ def build_zipapp(
     packages: list[Path],
     entry_point: str | None = None,
     shebang: str = "#!/usr/bin/env python3",
+    *,
+    compress: bool = False,
 ) -> None:
     """Build a zipapp-compatible zip file.
 
@@ -22,6 +24,8 @@ def build_zipapp(
         entry_point: Entry point code to write to __main__.py.
             If None, no __main__.py is created.
         shebang: Shebang line to prepend to the zip file
+        compress: Whether to compress the zip file using deflate method.
+            Defaults to False (no compression) to match zipapp behavior.
 
     Raises:
         ValueError: If output path is invalid or packages are empty
@@ -34,11 +38,13 @@ def build_zipapp(
 
     output.parent.mkdir(parents=True, exist_ok=True)
 
+    compression = zipfile.ZIP_DEFLATED if compress else zipfile.ZIP_STORED
     logger.debug("Building zipapp: %s", output)
     logger.debug("Packages: %s", [str(p) for p in packages])
     logger.debug("Entry point: %s", entry_point)
+    logger.debug("Compression: %s", "deflate" if compress else "stored")
 
-    with zipfile.ZipFile(output, "w", zipfile.ZIP_DEFLATED) as zf:
+    with zipfile.ZipFile(output, "w", compression) as zf:
         # Write entry point if provided
         if entry_point is not None:
             zf.writestr("__main__.py", entry_point)

@@ -18,7 +18,6 @@ Some of these we just want to consider, and may not want to implement.
   - `-o, --output`: Output file path
   - `-p, --python`: Shebang line (interpreter path)
   - `-m, --main`: Main entry point (module:function or module)
-  - `-c, --compress`: Enable compression (deflate method)
   - Support reading existing `.pyz` archives as SOURCE
 - **Basic CLI**: Simple command-line interface for bundling
 
@@ -49,7 +48,6 @@ Some of these we just want to consider, and may not want to implement.
   - `zipbundler SOURCE -o OUTPUT` - Specify source and output
   - `-p, --python SHEBANG` - Set shebang line (e.g., `"/usr/bin/env python3"`)
   - `-m, --main ENTRY_POINT` - Set main entry point (e.g., `"myapp:main"`)
-  - `--compress` - Enable compression
   - Example: `zipbundler src/myapp -o app.pyz -p "/usr/bin/env python3" -m "myapp:main"`
 
 ## ⚙️ Configuration Features

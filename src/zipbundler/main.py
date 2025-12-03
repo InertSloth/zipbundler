@@ -47,6 +47,12 @@ def main(args: list[str] | None = None) -> int:  # noqa: C901, PLR0911, PLR0912,
         default="#!/usr/bin/env python3",
         help="Shebang line (default: '#!/usr/bin/env python3')",
     )
+    parser.add_argument(
+        "-c",
+        "--compress",
+        action="store_true",
+        help="Enable compression (deflate method)",
+    )
 
     parsed_args = parser.parse_args(args)
 
@@ -104,6 +110,7 @@ def main(args: list[str] | None = None) -> int:  # noqa: C901, PLR0911, PLR0912,
             packages=packages,
             entry_point=entry_point,
             shebang=parsed_args.python,
+            compress=parsed_args.compress,
         )
     except (ValueError, FileNotFoundError) as e:
         logger.errorIfNotDebug(str(e))
